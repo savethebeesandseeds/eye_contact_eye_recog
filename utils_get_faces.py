@@ -6,22 +6,23 @@ import dlib
 import utils_for_files
 
 class DETECT_FACES:
-    def __init__(self, img_path_, temp_folder, face_detector_method='hog', lm_predictor_path='shape_predictor_68_face_landmarks.dat'):
-        self.set_image_path(img_path_)
-        self.load_image_file()
+    def __init__(self, temp_folder, img_path_=None, face_detector_method='hog', lm_predictor_path='shape_predictor_68_face_landmarks.dat', cnn_path='mmod_human_face_detector.dat', reset_env=False):
+        if(img_path_ is not None):
+            self.set_image_path(img_path_)
+            self.load_image_file()
         self.temp_folder = temp_folder
         self.face_detector_method = face_detector_method
         self.lm_predictor_path = lm_predictor_path
-        self.reset_env()
-    
+        self.cnn_path = cnn_path
+        if(reset_env):
+            self.reset_env()
+        
     def reset_env(self):
         self.win = dlib.image_window()
         self.win.clear_overlay()
-        utils_for_files.reset_folder(self.temp_folder, just_content=True)
         self.lm_predictor = dlib.shape_predictor(self.lm_predictor_path)
         if(self.face_detector_method.lower() == 'cnn'):
-            arg_ = 'mmod_human_face_detector.dat'
-            self.face_detector = dlib.cnn_face_detection_model_v1(arg_)
+            self.face_detector = dlib.cnn_face_detection_model_v1(self.cnn_path)
         elif(self.face_detector_method.lower() == 'hog'):
             self.face_detector = dlib.get_frontal_face_detector()
         
@@ -36,7 +37,6 @@ class DETECT_FACES:
         # METHOD: 'HOG'/'cnn'
         # upsample_factor = int # The bigger the better, the bigger the slower
         if(self.face_detector_method.lower() == 'cnn'):
-            arg_ = 'mmod_human_face_detector.dat'
             self.face_det = self.face_detector(self.dlib_image, upsample_factor).rect
         elif(self.face_detector_method.lower() == 'hog'):
             self.face_det = self.face_detector(self.dlib_image, upsample_factor)

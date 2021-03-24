@@ -20,7 +20,8 @@ def reset_folder(path_, just_content=False):
         os.makedirs(path_)
     else:
         for pth in os.listdir(path_):
-            if(os.path.isfile(pth)):
-                os.remove(pth)
-            elif(os.path.isdir(pth)):
-                shutil.rmtree(pth)
+            aux_pth = os.path.normpath(os.path.join(path_,pth))
+            if(os.path.isfile(aux_pth)):
+                os.remove(aux_pth)
+            elif(os.path.isdir(aux_pth)):
+                shutil.rmtree(aux_pth)
