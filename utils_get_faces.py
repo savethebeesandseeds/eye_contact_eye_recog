@@ -29,7 +29,9 @@ class DETECT_FACES:
     def set_image_path(self, path_):
         self.current_img_path = path_
 
-    def load_image_file(self):
+    def load_image_file(self, img_path_):
+        if(img_path_ is not None):
+            self.set_image_path(path_=img_path_)
         if(utils_for_files.assert_file(self.current_img_path, assert_by_creation=False)):
             self.dlib_image = dlib.load_rgb_image(self.current_img_path)
 
@@ -98,4 +100,4 @@ class DETECT_FACES:
         if(print_flag):
             print(">> saving image to file: {}".format(path_))
         pil_image.save(path_)
-            
+        

@@ -30,11 +30,12 @@ class video_mech:
         print("execution time to read vidcap: {}".format(time()-p_start))
         print('Read a new frame #{}: '.format(self.fn_cnt), success)
         self.fn_cnt += self.frame_jump
+        self.image_id = uuid.uuid1()
         return success
     def save_c_image(self, path_=None):
         if(path_ is not None):
             assert False, 'not configured'
         else:
-            img_temp_path = self.temp_folder+"/{}___{}.jpg".format(uuid.uuid1(), self.fn_cnt)
+            img_temp_path = self.temp_folder+"/{}___{}.jpg".format(self.image_id, self.fn_cnt)
         cv2.imwrite(img_temp_path, self.c_image)
-        return img_temp_path
+        return img_temp_path, self.image_id
