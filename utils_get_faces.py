@@ -1,3 +1,5 @@
+# This code is propietary of www.waajacu.com
+# was developed by santiago restrepo.
 import os
 import uuid
 from PIL import Image

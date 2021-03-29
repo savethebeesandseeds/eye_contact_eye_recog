@@ -1,3 +1,5 @@
+# This code is propietary of www.waajacu.com
+# was developed by santiago restrepo.
 import cv2
 import uuid
 from time import time, sleep
@@ -18,19 +20,22 @@ class video_mech:
             assert self.source_fps >= process_at_fps, 'processing fps configured is too high'
             self.frame_jump = int(self.source_fps/process_at_fps)
     def get_frame_cam(self):
-        pass
-    def get_frame_video(self, frame_jump=None):
+        assert False, 'not yet implemented'
+    def get_frame_video(self, frame_jump=None, idx=None):
         if(frame_jump is not None):
             self.fn_cnt += frame_jump
-        p_start = time()
+        # p_start = time()
         self.vidcap.set(cv2.CAP_PROP_POS_FRAMES, self.fn_cnt)
-        print("execution time to set vidcap: {}".format(time()-p_start))
-        p_start = time()
+        # print("execution time to set vidcap: {}".format(time()-p_start))
+        # p_start = time()
         success, self.c_image = self.vidcap.read()
-        print("execution time to read vidcap: {}".format(time()-p_start))
-        print('Read a new frame #{}: '.format(self.fn_cnt), success)
+        # print("execution time to read vidcap: {}".format(time()-p_start))
+        # print('Read a new frame #{}: '.format(self.fn_cnt), success)
         self.fn_cnt += self.frame_jump
-        self.image_id = uuid.uuid1()
+        if(idx is None):
+            self.image_id = str(uuid.uuid1())
+        else:
+            self.image_id = str(idx)+'_____'+str(uuid.uuid1())
         return success
     def save_c_image(self, path_=None):
         if(path_ is not None):

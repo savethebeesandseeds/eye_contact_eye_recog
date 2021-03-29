@@ -109,7 +109,7 @@ def rescale_box_coord(boxes, width, height):
 
     return boxes_coord
 
-def draw_boxes(image, detection_data, labels, colors):
+def draw_boxes(image, detected_boxes, labels, colors):
 
     font = cv2.FONT_HERSHEY_SIMPLEX
     font_scale = 0.5
@@ -119,8 +119,8 @@ def draw_boxes(image, detection_data, labels, colors):
     text_all = []
 
     (H, W) = image.shape[:2]
-    data_box = rescale_box_coord([_['box'] for _ in detection_data], W, H)
-    for i, data in enumerate(detection_data):
+    data_box = rescale_box_coord([_['box'] for _ in detected_boxes], W, H)
+    for i, data in enumerate(detected_boxes):
         color = tuple([int(c) for c in colors[data['class']]])
         text = "{}: {:.4f}".format(labels[data['class']], data['score'])
         text_all.append(text)
@@ -234,6 +234,7 @@ def calculate_overlap(box0, box1):
         y_overlap = (box1['y'] - box0['y'] + box1['h'])
     assert x_overlap > 0 and y_overlap > 0
     return x_overlap * y_overlap
+
 def get_good_boxes(all_data, only_humans=False, min_precision=0.0, max_overlap=1.0):
     good_boxes = []
     actual_boxes = []
@@ -257,3 +258,18 @@ def get_good_boxes(all_data, only_humans=False, min_precision=0.0, max_overlap=1
                 actual_boxes.append(get_box_coords(data['box']))
                 good_boxes.append(data)
     return good_boxes
+
+def get_only_new_boxes(all_data, all_data_past, discriminant_factor=0.0):
+    # discriminant_factor==0, all boxes are new boxes==1.0 there are no new boxes.
+    def compare_two_boxes(box1, box2):
+        sum_aux = sum([abs(box1[_] - box2[_]) for _, bx in enumerate(box1)])/len(box1)
+        # print("box1:{}, box2:{}, sum:{}, discriminant_flag:{}".format(box1, box2, sum_aux, sum_aux>= discriminant_factor))
+        return sum_aux
+    new_boxes = []
+    past_box_aux = []
+    for idx, ad in enumerate(all_data):
+        if all([compare_two_boxes(ad['box'], adp['box']) >= discriminant_factor for adp in all_data_past]):
+            new_boxes.append(ad)
+        else:
+            past_box_aux.append(ad)
+    return new_boxes, past_box_aux
