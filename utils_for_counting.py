@@ -12,5 +12,5 @@ class COUNTER_MECH:
 
     def update_report(self, _data=''):
         utils_for_files.update_file(_path=self.report_file, _label=self.file_label, _data=_data, append_flag=False)
-        print(">> REPORT FILE UPDATED")
+        print(">> REPORT FILE UPDATED: <{}>".format(_data))
 

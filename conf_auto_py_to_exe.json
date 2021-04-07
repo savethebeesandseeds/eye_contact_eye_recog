@@ -1,0 +1,133 @@
+{
+ "version": "auto-py-to-exe-configuration_v1",
+ "pyinstallerOptions": [
+  {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
+   "optionDest": "filenames",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/main.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": true
+  },
+  {
+   "optionDest": "console",
+   "value": true
+  },
+  {
+   "optionDest": "icon_file",
+   "value": "/www/waacamaya/waacamaya_c.jpg"
+  },
+  {
+   "optionDest": "name",
+   "value": "count_faces_and_bodies"
+  },
+  {
+   "optionDest": "ascii",
+   "value": false
+  },
+  {
+   "optionDest": "clean_build",
+   "value": false
+  },
+  {
+   "optionDest": "strip",
+   "value": false
+  },
+  {
+   "optionDest": "noupx",
+   "value": false
+  },
+  {
+   "optionDest": "uac_admin",
+   "value": false
+  },
+  {
+   "optionDest": "uac_uiaccess",
+   "value": false
+  },
+  {
+   "optionDest": "win_private_assemblies",
+   "value": false
+  },
+  {
+   "optionDest": "win_no_prefer_redirects",
+   "value": false
+  },
+  {
+   "optionDest": "bootloader_ignore_signals",
+   "value": false
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/utils_for_blur.py:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/utils_for_bodies.py:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/utils_for_cipher.py:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/utils_for_counting.py:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/utils_for_files.py:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/utils_for_tracking.py:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/utils_for_video.py:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/utils_for_yolo.py:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/utils_for_yolo_torch.py:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/utils_get_faces.py:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/utils_get_faces_faceLib.py:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/yolo/yolo_ocv_utils.py:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/yolo/models/coco.names:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/yolo/models/crowdhuman/yolov4-crowdhuman-416x416.cfg:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/yolo/models/crowdhuman/yolov4-tiny-crowdhuman-416x416.cfg:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/work/img_recognition/count_eye_contact_with_camera_video/yolo/models/crowdhuman/yolov4-tiny-crowdhuman-416x416_best.weights:."
+  }
+ ],
+ "nonPyinstallerOptions": {
+  "increaseRecursionLimit": true,
+  "manualArguments": ""
+ }
+}
